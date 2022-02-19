@@ -26,5 +26,5 @@ migrate-shell:
 	docker-compose exec migrate bash
 migrate-up:
 	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose up'
-migrateup:
+migrate-down:
 	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose down'
