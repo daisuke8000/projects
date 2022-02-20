@@ -22,7 +22,7 @@ make build
 create database
 ```bash
 # make database simple_bank
-make create-db
+make createdb
 ```
 migrations
 ```bash
