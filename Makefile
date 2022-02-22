@@ -18,7 +18,6 @@ createdb:
 	docker-compose exec db createdb --username=postgres --owner=postgres simple_bank
 dropdb:
 	docker-compose exec db dropdb --username=postgres simple_bank
-.PHONY: createdb, dropdb
 ###############################################################################
 # migrate
 ###############################################################################
@@ -33,3 +32,9 @@ migrate-down:
 ###############################################################################
 sqlc:
 	cd ./db && sqlc generate && cd -
+###############################################################################
+# test
+###############################################################################
+test:
+	go test -v -cover ./...
+.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test
