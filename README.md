@@ -34,3 +34,7 @@ sql-builder
 # cd ./db && sqlc generate && cd -
 make sqlc
 ```
+test-coverage
+```bash
+make test 
+```
