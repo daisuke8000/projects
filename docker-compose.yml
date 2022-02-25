@@ -21,7 +21,7 @@ services:
   #db
   db:
     build:
-      context: $PWD/docker/db
+      context: ./docker/db
       dockerfile: Dockerfile
     container_name: web-postgres
     expose:
@@ -32,18 +32,18 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - $PWD/db:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
     networks:
       - migrate-ntwk
 
   migrate:
     tty: true
     build:
-      context: $PWD/docker/migrate
+      context: ./docker/migrate
       dockerfile: Dockerfile
     container_name: go-migrate
     volumes:
-      - $PWD/db:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
     working_dir: /docker-entrypoint-initdb.d
     depends_on:
       - db
