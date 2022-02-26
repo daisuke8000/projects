@@ -6,7 +6,7 @@ amount
     $1, $2
 ) RETURNING *;
 
--- name: GenerateEntry :one
+-- name: GetEntry :one
 SELECT * FROM entries
 WHERE id = $1 LIMIT 1;
 
