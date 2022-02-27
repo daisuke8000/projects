@@ -10,7 +10,7 @@ amount
 SELECT * FROM entries
 WHERE id = $1 LIMIT 1;
 
--- name: ListEntry :many
+-- name: ListEntries :many
 SELECT * FROM entries
 WHERE account_id = $1
 ORDER BY id
