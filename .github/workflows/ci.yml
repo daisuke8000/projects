@@ -20,7 +20,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: simple_bank
         ports:
-          # サービスコンテナの tcp ポート 5432 をホストにマップする
+          # 外部接続用ポートの15432をマッピングする
           - 15432:5432
         # postgres が起動するまで待機するようにヘルスチェックを設定する
         options: >-
@@ -43,7 +43,7 @@ jobs:
           which migrate
 
       - name: Run migrate
-        run: make ci
+        run: make migrate-ci
 
       - name: Run Test
         run: make test
