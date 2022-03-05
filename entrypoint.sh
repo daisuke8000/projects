@@ -6,3 +6,4 @@ done
 echo "postgres Connection Successfully"
 
 exec "$@"
+exec air -c air.toml

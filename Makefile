@@ -39,4 +39,10 @@ sqlc:
 ###############################################################################
 test:
 	go test -v -cover ./...
-.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test
+###############################################################################
+# server
+###############################################################################
+server:
+	go run main.go
+
+.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test, server
