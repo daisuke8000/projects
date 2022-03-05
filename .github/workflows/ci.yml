@@ -21,7 +21,7 @@ jobs:
           POSTGRES_DB: simple_bank
         ports:
           # サービスコンテナの tcp ポート 5432 をホストにマップする
-          - 5432:5432
+          - 15432:5432
         # postgres が起動するまで待機するようにヘルスチェックを設定する
         options: >-
           --health-cmd pg_isready
