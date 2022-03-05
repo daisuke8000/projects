@@ -15,18 +15,17 @@ RUN chmod +x entrypoint.sh && \
     go get github.com/gin-gonic/gin
 COPY . .
 RUN go build -o /app/tmp/main .
-CMD ["sh", "entrypoint.sh"]
 
-##########
+#########
 #develop
-##########
-#FROM golang:1.17.1-alpine3.14 as develop
-#ENV CGO_ENABLED 0
-#ENV GO111MODULE on
-#WORKDIR /app/
-#COPY --from=builder /app/tmp/main /app/tmp/main
-#COPY --from=builder /app/go.mod /app/go.sum /app/air.toml /app/develop-entrypoint.sh /app/
-#RUN go get github.com/go-delve/delve/cmd/dlv && \
-#    go install github.com/cosmtrek/air@v1.27.3
-#
-#CMD ["sh", "develop-entrypoint.sh"]
+#########
+FROM golang:1.17.1-alpine3.14 as develop
+ENV CGO_ENABLED 0
+ENV GO111MODULE on
+WORKDIR /app/
+COPY --from=builder /app/tmp/main /app/tmp/main
+COPY --from=builder /app/go.mod /app/go.sum /app/air.toml /app/entrypoint.sh /app/
+RUN go install github.com/go-delve/delve/cmd/dlv@master && \
+    go install github.com/cosmtrek/air@v1.27.3
+
+CMD ["sh", "entrypoint.sh"]
