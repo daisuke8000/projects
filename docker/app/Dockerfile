@@ -10,12 +10,12 @@ WORKDIR /app/
 RUN apk upgrade --update && \
     apk --no-cache add git
 COPY ../../go.mod go.sum entrypoint.sh ./
-RUN chmod +x entrypoint.sh  && \
+RUN chmod +x entrypoint.sh && \
     go mod download && \
     go get github.com/gin-gonic/gin
 COPY . .
-#RUN go build -o /app/tmp/main .
-#CMD ["sh", "entrypoint.sh"]
+RUN go build -o /app/tmp/main .
+CMD ["sh", "entrypoint.sh"]
 
 ##########
 #develop
