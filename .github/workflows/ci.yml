@@ -43,5 +43,6 @@ jobs:
         run: |
           pwd
           ls -l
+          make psql
       - name: Run Test
-        run: make testgit
+        run: make test
