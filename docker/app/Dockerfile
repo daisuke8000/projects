@@ -12,7 +12,7 @@ RUN apk upgrade --update && \
 COPY ../../go.mod go.sum entrypoint.sh ./
 RUN chmod +x entrypoint.sh && \
     go mod download && \
-    go get github.com/gin-gonic/gin
+    go get github.com/gin-gonic/gin github.com/spf13/viper
 COPY . .
 RUN go build -o /app/tmp/main .
 
