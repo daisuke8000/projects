@@ -6,6 +6,7 @@ this application Architecture
 ## Libraries
 - [golang-migrate](https://github.com/golang-migrate/migrate)
 - [sqlc](https://github.com/kyleconroy/sqlc)
+- [viper](https://github.com/spf13/viper)
 
 ### sqlc install
 ```bash
