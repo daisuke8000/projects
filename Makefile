@@ -44,5 +44,10 @@ test:
 ###############################################################################
 server:
 	go run main.go
+###############################################################################
+# mock
+###############################################################################
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/daisuke8000/simple-bank/db/sqlc Store
 
-.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test, server
+.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test, server, mock
