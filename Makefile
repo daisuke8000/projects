@@ -23,10 +23,19 @@ dropdb:
 ###############################################################################
 migrate-shell:
 	docker-compose exec migrate bash
+
 migrate-up:
 	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose up'
+
+migrate-up1:
+	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose up 1'
+
 migrate-down:
 	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose down'
+
+migrate-down1:
+	docker-compose exec migrate bash -c 'migrate -path ./migrate -database "postgres://postgres:postgres@db:5432/simple_bank?sslmode=disable" -verbose down 1'
+
 migrate-ci:
 	migrate -path ./db/migrate -database "postgres://postgres:postgres@localhost:15432/simple_bank?sslmode=disable" -verbose up
 ###############################################################################
@@ -50,4 +59,4 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/daisuke8000/simple-bank/db/sqlc Store
 
-.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, sqlc, test, server, mock
+.PHONY: createdb, dropdb, psql, psql-shell, migrate-shell, migrate-up, migrate-down, migrate-up1, migrate-down1,sqlc, test, server, mock
